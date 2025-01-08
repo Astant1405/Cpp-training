@@ -4,6 +4,13 @@
 int main(){
     std::string word;
     std::cin >> word;
+    for(size_t j = 1; j < word.size(); ++j){
+        if (word[j] == word[j-1]){
+            word.erase(j, 1);
+            --j;
+        }
+    }
+    
     for(size_t i = 0; i != word.size(); ++i){
         if(word[i] == 'b' || word[i] == 'f' || word[i] == 'p' || word[i] == 'v'){
             word.replace(i, 1, "1");
@@ -24,7 +31,7 @@ int main(){
             word.replace(i, 1, "6");
         }
         else{
-            if (i!= 0){
+            if (i!= 0 && (word[i] == 'a' || word[i] == 'e' || word[i] == 'i' || word[i] == 'o' || word[i] == 'u' || word[i] == 'h' || word[i] == 'w')){
                 word.erase(i, 1);
                 --i;
             }
@@ -41,10 +48,10 @@ int main(){
     }
     else if (word.size() < 4){
         int len = 4 - word.size();
-        std::cout << word;
         for (int k = 0; k < len; ++k){
-            std::cout << '0';
+            word += '0';
         }
+        std::cout << word;
     }
     else{
         std::cout << word; 

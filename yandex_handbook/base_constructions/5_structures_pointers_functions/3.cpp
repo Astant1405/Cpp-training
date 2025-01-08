@@ -12,9 +12,7 @@ std::vector<std::string> Split(const std::string& str, char delimiter){
             point = i + 1;
         }
     }
-    if(point < str.size()){
-        data.push_back(str.substr(point, str.size()));
-    }
+    data.push_back(str.substr(point));
     return data;
 }
 
