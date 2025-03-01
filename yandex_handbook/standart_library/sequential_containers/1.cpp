@@ -3,17 +3,20 @@
 #include <string>
 #include <iterator>
 
-int Print(const std::vector <int> &data, const std::string &sep){
-    auto last = std::prev(data.end());
-    for(auto iter = data.begin(); iter != last; iter++){
-        std::cout << *iter << sep;
+template <typename Container>
+void Print(const Container &data, const std::string &sep){
+    for(auto iter = data.begin(); iter != data.end(); iter++){
+        if(std::next(iter) == data.end()){
+            std::cout << *iter;
+        }
+        else{
+            std::cout << *iter << sep;
+        }
     }
-    std::cout << *last;
     std::cout << '\n';
-    return 0;
 }
 
 int main() {
-    std::vector<int> data = {1, 2, 3, 4};
+    std::vector<int> data = {1, 2};
     Print(data, ", ");  // 1, 2, 3, 4
 }
